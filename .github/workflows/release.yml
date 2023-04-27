@@ -25,4 +25,4 @@ jobs:
           files: |
             docs/config-file.html
             docs/schema_doc.css
-            schema_doc.min.js
+            docs/schema_doc.min.js

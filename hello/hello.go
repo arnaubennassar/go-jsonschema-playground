@@ -3,14 +3,16 @@ package hello
 import (
 	"fmt"
 	"time"
+
+	"github.com/arnaubennassar/go-jsonschema-playground/types"
 )
 
-// HelloConfig blu blu blu
-type HelloConfig struct {
+// Config blu blu blu
+type Config struct {
 	// Message that is going to be logged on the console
-	GreatingMessage string `json:"greatingMessage" jsonschema:"example=hello world,default=hello"`
+	GreatingMessage string `jsonschema:"example=hello world,default=hello"`
 	// Frequency in which the message is going to be logged
-	GreatingFrequency time.Duration `json:"greatingFrequency" jsonschema:"example=1h,default=10s"`
+	GreatingFrequency types.Duration `jsonschema:"default=10s"`
 }
 
 type Hello struct {
@@ -18,10 +20,10 @@ type Hello struct {
 	greatingFrequency time.Duration
 }
 
-func New(c HelloConfig) Hello {
+func New(c Config) Hello {
 	return Hello{
 		greatingMessage:   c.GreatingMessage,
-		greatingFrequency: c.GreatingFrequency,
+		greatingFrequency: c.GreatingFrequency.Duration,
 	}
 }
 

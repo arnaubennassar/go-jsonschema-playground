@@ -1,71 +1,72 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://github.com/arnaubennassar/go-jsonschema-playground/config/config",
-	"$defs": {
-		"HelloConfig": {
-			"properties": {
-				"greatingMessage": {
-					"type": "string",
-					"description": "Message that is going to be logged on the console",
-					"default": "hello",
-					"examples": [
-						"hello world"
-					]
-				},
-				"greatingFrequency": {
-					"type": "integer",
-					"description": "Frequency in which the message is going to be logged",
-					"default": 0
-				}
-			},
-			"additionalProperties": false,
-			"type": "object",
-			"required": [
-				"greatingMessage",
-				"greatingFrequency"
-			],
-			"description": "HelloConfig blu blu blu"
-		},
-		"WorldConfig": {
-			"properties": {
-				"greatingMessage": {
-					"type": "string",
-					"description": "Message that is going to be logged on the console",
-					"default": "hello",
-					"examples": [
-						"hello world"
-					]
-				},
-				"greatingFrequency": {
-					"type": "integer",
-					"description": "Frequency in which the message is going to be logged",
-					"default": 0
-				}
-			},
-			"additionalProperties": false,
-			"type": "object",
-			"required": [
-				"greatingMessage",
-				"greatingFrequency"
-			],
-			"description": "WorldConfig bla bla bla"
-		}
-	},
+	"$id": "github.com/arnaubennassar/go-jsonschema-playgroundconfig/config",
 	"properties": {
-		"hello": {
-			"$ref": "#/$defs/HelloConfig",
+		"Hello": {
+			"properties": {
+				"GreatingMessage": {
+					"type": "string",
+					"description": "Message that is going to be logged on the console",
+					"default": "hello",
+					"examples": [
+						"hello world"
+					]
+				},
+				"GreatingFrequency": {
+					"type": "string",
+					"title": "Duration",
+					"description": "Frequency in which the message is going to be logged",
+					"default": "10s",
+					"examples": [
+						"1m",
+						"300ms"
+					]
+				}
+			},
+			"additionalProperties": false,
+			"type": "object",
+			"required": [
+				"GreatingMessage",
+				"GreatingFrequency"
+			],
 			"description": "Configuration of the hello component, this component will log messages on the console in a specified frequency"
 		},
-		"world": {
-			"$ref": "#/$defs/WorldConfig",
+		"World": {
+			"properties": {
+				"GreatingMessage": {
+					"type": "string",
+					"description": "Message that is going to be logged on the console",
+					"default": "hello",
+					"examples": [
+						"hello world"
+					]
+				},
+				"GreatingFrequency": {
+					"type": "string",
+					"title": "Duration",
+					"description": "Frequency in which the message is going to be logged",
+					"default": "35s",
+					"examples": [
+						"1m",
+						"300ms"
+					],
+					"env": "WORLD_GREATINGFREQUENCY"
+				}
+			},
+			"additionalProperties": false,
+			"type": "object",
+			"required": [
+				"GreatingMessage",
+				"GreatingFrequency"
+			],
 			"description": "Configuration of the world component, this component will log messages on the console in a specified frequency"
 		}
 	},
 	"additionalProperties": false,
 	"type": "object",
 	"required": [
-		"hello",
-		"world"
+		"Hello",
+		"World"
 	],
 	"description": "Config is used to configure the hello world components"
 }

@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"reflect"
+	"strings"
 
 	"github.com/arnaubennassar/go-jsonschema-playground/config"
 	"github.com/invopop/jsonschema"
@@ -27,16 +29,19 @@ func main() {
 	}
 }
 
-func genJSONSchema(*cli.Context) error {
+func genJSONSchema(cli *cli.Context) error {
 	r := new(jsonschema.Reflector)
-	// r.Namer = func(rt reflect.Type) string {
-	// 	return rt.PkgPath() + "/" + rt.Name()
-	// }
+	repoName := "github.com/arnaubennassar/go-jsonschema-playground"
+	r.Namer = func(rt reflect.Type) string {
+		return strings.TrimLeft(rt.PkgPath(), repoName) + "_" + rt.Name()
+	}
 	r.ExpandedStruct = true
-	if err := r.AddGoComments("github.com/arnaubennassar/go-jsonschema-playground", "./"); err != nil {
+	r.DoNotReference = true
+	if err := r.AddGoComments(repoName, "./"); err != nil {
 		return err
 	}
 	schema := r.Reflect(&config.Config{})
+	schema.ID = jsonschema.ID(repoName + "config/config")
 	file, err := json.MarshalIndent(schema, "", "\t")
 	if err != nil {
 		return err

@@ -14,7 +14,7 @@ Run `go run . generate-json-schema`, this will create `docs/schema.json`
 ### Generate HTML doc
 
 1. (Run only once) Install `json-schema-for-humans`, requires `pip`: `pip install json-schema-for-humans`. **NOTE:** this is the same tool as in previous step, so if you've already isntalled it, no need to do it again
-2. Run `generate-schema-doc docs/schema.json docs/index.html`, this will create `docs/index.html`, `docs/schema_doc.html`, `docs/schema_doc.html`
+2. Run `generate-schema-doc docs/schema.json docs/index.html`, this will create `docs/index.html`, `docs/schema_doc.html`, `docs/schema_doc.html`. [Visualization using GitHub Pages](https://arnaubennassar.github.io/go-jsonschema-playground)
 
 ### Generate defaults
 
